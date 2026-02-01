@@ -6,127 +6,105 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/backend-Laravel-red" alt="Backend">
-  <img src="https://img.shields.io/badge/API-RESTful-blue" alt="API">
-  <img src="https://img.shields.io/badge/status-in%20development-yellow" alt="Status">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+  <img src="https://img.shields.io/badge/API-REST-blue" alt="API">
+  <img src="https://img.shields.io/badge/estado-en%20desarrollo-yellow" alt="Estado">
+  <img src="https://img.shields.io/badge/licencia-MIT-green" alt="Licencia">
 </p>
 
-## About Arkium
+## Sobre Arkium
 
-**Arkium** is an **API-first backend** built with **Laravel**, designed to act as a **centralized personal archive** for tracking and reflecting on consumed media such as:
+**Arkium** es un **backend API-first** desarrollado con **Laravel**, diseñado como un **archivo personal centralizado** para registrar, organizar y reflexionar sobre contenido consumido, como:
 
-- 🎬 Movies  
-- 📺 TV Series  
-- 📚 Books  
-- 🎮 Video games  
+- 🎬 Películas  
+- 📺 Series  
+- 📚 Libros  
+- 🎮 Videojuegos  
 
-The project prioritizes **robust architecture**, **security**, and **long-term scalability**, allowing multiple clients (mobile, desktop, or web) to consume the same backend seamlessly.
+El proyecto está concebido con una mentalidad de **robustez, seguridad y escalabilidad**, permitiendo que distintos clientes (web, móvil o escritorio) consuman el mismo backend sin dependencias entre ellos.
 
-Arkium is intentionally **frontend-agnostic**, serving as a clean and reusable core for future applications.
-
----
-
-## Core Features
-
-- User registration and authentication
-- Secure token-based API access
-- Media tracking (movies, series, books, games)
-- Association with creators (authors, directors, studios)
-- Consumption dates and metadata
-- Reviews, personal notes, and critiques
-- Designed for progressive expansion
+Arkium **no está ligado a ningún frontend**, y actúa como un núcleo reutilizable sobre el que construir diferentes aplicaciones.
 
 ---
 
-## Architecture Principles
+## Funcionalidades principales
 
-Arkium follows a strict **API-only architecture**:
-
-- RESTful endpoints
-- Stateless authentication
-- Clear separation of concerns
-- Versioned API (`/api/v1`)
-- Database schema controlled exclusively through migrations
-- Clients consume the same API regardless of platform
-
-This architecture allows Arkium to power:
-- Mobile applications
-- Web applications
-- Desktop clients
-- External services
+- Registro y autenticación de usuarios
+- Acceso seguro mediante tokens
+- Gestión de elementos multimedia (películas, series, libros y videojuegos)
+- Asociación con autores, directores, estudios u otros creadores
+- Registro de fechas de consumo y metadatos
+- Reseñas, notas personales y críticas
+- Base preparada para futuras funcionalidades sociales
 
 ---
 
-## Tech Stack
+## Principios de arquitectura
+
+Arkium sigue una arquitectura **API pura y desacoplada**:
+
+- Endpoints RESTful
+- Autenticación sin estado (stateless)
+- Separación clara de responsabilidades
+- API versionada (`/api/v1`)
+- Esquema de base de datos controlado exclusivamente por migraciones
+- Independencia total del cliente consumidor
+
+Gracias a este enfoque, Arkium puede ser utilizado como backend para:
+- Aplicaciones móviles
+- Aplicaciones web
+- Aplicaciones de escritorio
+- Integraciones externas
+
+---
+
+## Tecnologías utilizadas
 
 - Framework: Laravel  
-- Language: PHP  
-- Database: MySQL / PostgreSQL (SQLite for local development)  
-- Authentication: Token-based API authentication (OAuth-ready)  
+- Lenguaje: PHP  
+- Base de datos: MySQL / PostgreSQL (SQLite para desarrollo local)  
+- Autenticación: API basada en tokens (preparada para OAuth)  
 - ORM: Eloquent  
-- Version Control: Git  
+- Control de versiones: Git  
 
 ---
 
-## Development Setup
+## Gestión de base de datos
 
-### Requirements
+La estructura de la base de datos se gestiona íntegramente mediante **migraciones**.
 
-- PHP 8.x or higher
-- Composer
-- MySQL or PostgreSQL (recommended for production)
-
-### Installation
-
-1. Install project dependencies  
-2. Create a `.env` file from the example  
-3. Generate the application key  
-4. Run database migrations  
-5. Start the local development server  
-
-The API will be available at:
-http://127.0.0.1:8000
-
----
-
-## Database Management
-
-All database structure is managed using **Laravel migrations**.
-
-- Migrations ensure the database schema is reproducible across environments
-- No manual SQL is required
-- Production and local schemas remain in sync
-
-For local resets, a fresh migration can be executed.
+Este enfoque garantiza que:
+- El esquema sea reproducible en cualquier entorno
+- No se realicen cambios manuales en la base de datos
+- Local, VPS y producción mantengan la misma estructura
 
 ---
 
 ## Roadmap
 
-Planned features include:
+Algunas de las mejoras previstas para el proyecto:
 
-- Google OAuth authentication
-- External metadata integration
-- Advanced search and filtering
-- Ratings and reactions
-- Privacy levels for user content
-- Optional public profiles and sharing
-
----
-
-## Contributing
-
-Arkium is currently developed as a personal backend project.  
-Feedback, ideas, and constructive contributions are welcome.
+- Autenticación con Google
+- Integración con APIs externas para enriquecer metadatos
+- Búsqueda avanzada y filtrado
+- Sistema de valoraciones
+- Niveles de privacidad del contenido
+- Perfiles públicos opcionales
 
 ---
 
-## Security
+## Contribuciones
 
-If you discover a security vulnerability, please report it responsibly and avoid creating public issues.
+Arkium es un proyecto personal en desarrollo.  
+Las ideas, sugerencias y aportaciones constructivas son bienvenidas.
 
 ---
 
-## License
+## Seguridad
 
-Arkium is open-source software licensed under the **MIT license**.
+Si se detecta alguna vulnerabilidad de seguridad, se recomienda **no abrir issues públicos** y comunicarlo de forma responsable para su corrección.
+
+---
+
+## Licencia
+
+Arkium es software de código abierto bajo la **licencia MIT**.
