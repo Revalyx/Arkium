@@ -15,8 +15,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $data = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
         ]);
 
@@ -25,10 +25,11 @@ class AuthController extends Controller
         return response()->json($result, 201);
     }
 
+
     public function login(Request $request)
     {
         $data = $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
@@ -36,6 +37,7 @@ class AuthController extends Controller
 
         return response()->json($result);
     }
+
 
     public function logout(Request $request)
     {
