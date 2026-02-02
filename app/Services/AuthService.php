@@ -45,7 +45,7 @@ class AuthService
             ]);
         }
 
-        $token = TokenService::createToken($user->id, 'default');
+        $token = TokenService::createToken($user->id, 'login');
 
         return [
             'user'  => $user,
