@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -13,18 +14,21 @@ class AuthService
      */
     public function register(array $data): array
     {
-        $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return DB::transaction(function () use ($data) {
 
-        $token = TokenService::createToken($user->id, 'default');
+            $user = User::create([
+                'name'     => $data['name'],
+                'email'    => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
 
-        return [
-            'user'  => $user,
-            'token' => $token,
-        ];
+            $token = TokenService::createToken($user->id, 'default');
+
+            return [
+                'user'  => $user,
+                'token' => $token,
+            ];
+        });
     }
 
     /**
@@ -37,7 +41,7 @@ class AuthService
         // Mensaje genérico: no filtramos si el email existe
         if (!$user || !Hash::check($data['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['Credenciales inválidas.'],
+                'credentials' => ['Credenciales inválidas.'],
             ]);
         }
 

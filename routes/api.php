@@ -7,8 +7,8 @@ use App\Http\Controllers\Api\AuthController;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-| Todas las rutas están pensadas para API-only (stateless)
-| Versionadas desde el inicio.
+| API stateless, versionada desde el inicio.
+| Toda la autenticación se basa en tokens propios.
 */
 
 Route::prefix('v1')->group(function () {
@@ -21,10 +21,11 @@ Route::prefix('v1')->group(function () {
 
     Route::prefix('auth')->group(function () {
 
-        // Registro de usuario
-        Route::post('/register', [AuthController::class, 'register']);
+        // Registro de usuario (rate limit contra spam)
+        Route::post('/register', [AuthController::class, 'register'])
+            ->middleware('throttle:5,1'); // 5 registros por minuto
 
-        // Login con rate limiting (protección fuerza bruta)
+        // Login (protección contra fuerza bruta)
         Route::post('/login', [AuthController::class, 'login'])
             ->middleware('throttle:5,1'); // 5 intentos por minuto
 
@@ -42,7 +43,15 @@ Route::prefix('v1')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::middleware('auth.api')->get('/me', function () {
-        return auth()->user();
+    Route::middleware('auth.api')->group(function () {
+
+        Route::get('/me', function () {
+            return response()->json(auth()->user());
+        });
+
+        // Aquí irán en el futuro:
+        // - items
+        // - reviews
+        // - ratings
     });
 });
